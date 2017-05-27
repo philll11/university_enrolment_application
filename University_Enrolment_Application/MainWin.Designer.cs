@@ -35,7 +35,7 @@
 			this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.studentListBx = new System.Windows.Forms.ListBox();
 			this.paperDplyBtn = new System.Windows.Forms.Button();
-			this.button2 = new System.Windows.Forms.Button();
+			this.EnrollmentBtn = new System.Windows.Forms.Button();
 			this.sdtAddBtn = new System.Windows.Forms.Button();
 			this.PapAddBtn = new System.Windows.Forms.Button();
 			this.label1 = new System.Windows.Forms.Label();
@@ -46,6 +46,7 @@
 			this.label5 = new System.Windows.Forms.Label();
 			this.label6 = new System.Windows.Forms.Label();
 			this.label7 = new System.Windows.Forms.Label();
+			this.enrollmentErrorLbl = new System.Windows.Forms.Label();
 			this.menuStrip1.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -79,14 +80,14 @@
 			// openToolStripMenuItem
 			// 
 			this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-			this.openToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.openToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
 			this.openToolStripMenuItem.Text = "Open";
 			this.openToolStripMenuItem.Click += new System.EventHandler(this.OpenToolStripMenuItemClick);
 			// 
 			// saveToolStripMenuItem
 			// 
 			this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-			this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.saveToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
 			this.saveToolStripMenuItem.Text = "Save";
 			this.saveToolStripMenuItem.Click += new System.EventHandler(this.SaveToolStripMenuItemClick);
 			// 
@@ -108,15 +109,15 @@
 			this.paperDplyBtn.UseVisualStyleBackColor = true;
 			this.paperDplyBtn.Click += new System.EventHandler(this.PaperDplyBtnClick);
 			// 
-			// button2
+			// EnrollmentBtn
 			// 
-			this.button2.Location = new System.Drawing.Point(398, 448);
-			this.button2.Name = "button2";
-			this.button2.Size = new System.Drawing.Size(75, 23);
-			this.button2.TabIndex = 6;
-			this.button2.Text = "Enrollments";
-			this.button2.UseVisualStyleBackColor = true;
-			this.button2.Click += new System.EventHandler(this.StudentDplyBtnClick);
+			this.EnrollmentBtn.Location = new System.Drawing.Point(398, 448);
+			this.EnrollmentBtn.Name = "EnrollmentBtn";
+			this.EnrollmentBtn.Size = new System.Drawing.Size(75, 23);
+			this.EnrollmentBtn.TabIndex = 6;
+			this.EnrollmentBtn.Text = "Enrollments";
+			this.EnrollmentBtn.UseVisualStyleBackColor = true;
+			this.EnrollmentBtn.Click += new System.EventHandler(this.EnrollmentBtnClick);
 			// 
 			// sdtAddBtn
 			// 
@@ -214,11 +215,23 @@
 			this.label7.TabIndex = 16;
 			this.label7.Text = "3. Press the \'Enrol\' button under the student window.";
 			// 
+			// enrollmentErrorLbl
+			// 
+			this.enrollmentErrorLbl.AutoSize = true;
+			this.enrollmentErrorLbl.ForeColor = System.Drawing.Color.Red;
+			this.enrollmentErrorLbl.Location = new System.Drawing.Point(186, 96);
+			this.enrollmentErrorLbl.Name = "enrollmentErrorLbl";
+			this.enrollmentErrorLbl.Size = new System.Drawing.Size(138, 13);
+			this.enrollmentErrorLbl.TabIndex = 17;
+			this.enrollmentErrorLbl.Text = "* Student is already enrolled";
+			this.enrollmentErrorLbl.Visible = false;
+			// 
 			// MainWin
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(722, 533);
+			this.Controls.Add(this.enrollmentErrorLbl);
 			this.Controls.Add(this.label7);
 			this.Controls.Add(this.label6);
 			this.Controls.Add(this.label5);
@@ -229,7 +242,7 @@
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.PapAddBtn);
 			this.Controls.Add(this.sdtAddBtn);
-			this.Controls.Add(this.button2);
+			this.Controls.Add(this.EnrollmentBtn);
 			this.Controls.Add(this.paperDplyBtn);
 			this.Controls.Add(this.studentListBx);
 			this.Controls.Add(this.paperListBx);
@@ -254,7 +267,7 @@
 		private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
 		private System.Windows.Forms.ListBox studentListBx;
 		private System.Windows.Forms.Button paperDplyBtn;
-		private System.Windows.Forms.Button button2;
+		private System.Windows.Forms.Button EnrollmentBtn;
 		private System.Windows.Forms.Button sdtAddBtn;
 		private System.Windows.Forms.Button PapAddBtn;
 		private System.Windows.Forms.Label label1;
@@ -265,6 +278,7 @@
 		private System.Windows.Forms.Label label5;
 		private System.Windows.Forms.Label label6;
 		private System.Windows.Forms.Label label7;
+		private System.Windows.Forms.Label enrollmentErrorLbl;
 	}
 }
 

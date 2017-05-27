@@ -15,21 +15,32 @@ namespace Assignment_5_212
 		public PaperInfoWin(University uni, string name)
 		{
 			InitializeComponent();
-			
 			Paper p = uni.SelectPaper(name);
-			foreach (string student in p.StudentName)
-			{
-				studentListBx.Items.Add(student);
-			}
 			nameLbl.Text = p.Name;
 			idLbl.Text = p.Code;
 			coordLbl.Text = p.Coordinater;
-				
+
+
+			foreach (Student s in uni.Student)
+			{
+				foreach (Paper paper in s.EnrolledPapers)
+				{
+					if (paper.Name == name)
+					{
+						studentListBx.Items.Add(s.Name);
+						
+					}
+				}
+			}
+
 		}
 
 		private void SdtInforCnlBtnClick(object sender, EventArgs e)
 		{
 			this.Close();
 		}
+
+
+
 	}
 }

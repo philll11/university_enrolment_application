@@ -131,6 +131,7 @@
 			this.Controls.Add(this.idLbl);
 			this.Controls.Add(this.nameLbl);
 			this.Name = "PaperInfoWin";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "PaperInfoWin";
 			this.ResumeLayout(false);
 			this.PerformLayout();

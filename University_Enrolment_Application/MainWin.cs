@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -30,7 +31,7 @@ namespace Assignment_5_212
 			saw.ShowDialog();
 			if (State == true)
 			{
-				_myUniversity.AddSudent(_myStudent);
+				_myUniversity.Student.Add(_myStudent);
 				studentListBx.Items.Add(_myStudent.Name + " " + _myStudent.Id);
 			}
 		}
@@ -40,7 +41,8 @@ namespace Assignment_5_212
 			paw.ShowDialog();
 			if (State == true)
 			{
-				_myUniversity.AddPaper(_myPaper);
+				
+				_myUniversity.Paper.Add(_myPaper);
 				paperListBx.Items.Add(_myPaper.Name + " " + _myPaper.Code);
 			}
 		}
@@ -52,7 +54,7 @@ namespace Assignment_5_212
 				siw.ShowDialog();
 			}
 		}
-		private void StudentDplyBtnClick(object sender, EventArgs e)
+		private void EnrollmentBtnClick(object sender, EventArgs e)
 		{
 			if (paperListBx.SelectedIndex != -1)
 			{
@@ -66,98 +68,17 @@ namespace Assignment_5_212
 			{
 				_myStudent = _myUniversity.SelectStudent(NameFromListBxIndex(studentListBx));
 				_myPaper = _myUniversity.SelectPaper(NameFromListBxIndex(paperListBx));
-
-				_myUniversity.SelectPaper(NameFromListBxIndex(paperListBx)).StudentName.Add(_myStudent.Name);
-				_myUniversity.SelectStudent(NameFromListBxIndex(studentListBx)).EnrolledPapers.Add(_myPaper.Name);
-			}
-		}
-
-		public void PassStudent(Student aStudent) { this._myStudent = aStudent; }
-		public void PassPaper(Paper aPaper) { this._myPaper = aPaper; }
-		public bool State { get; set; }
-
-		public string NameFromListBxIndex(ListBox lb)
-		{
-			string n = lb.SelectedItem.ToString();
-			string fw = n.Substring(0, n.IndexOf(" "));
-			return fw;
-		}
-		/*
-		private void SaveToolStripMenuItemClick(object sender, EventArgs e)
-		{			
-			SaveFileDialog sfd = new SaveFileDialog()
-			{
-				Filter = "Text files (*.txt)|*.txt"
-			};
-			if (sfd.ShowDialog() == DialogResult.OK)
-			{
-				using (StreamWriter sw = new StreamWriter(sfd.OpenFile()))
+				if (AlreadyEnrolled(_myStudent, _myPaper))
 				{
-					foreach (Student s in _myUniversity.Student)
-					{
-						sw.WriteLine(s.Name);
-						sw.WriteLine(s.Birthday.ToShortDateString());
-						sw.WriteLine(s.Id);						
-						sw.WriteLine(s.Address);
-						sw.WriteLine(s.ConcatPapers());
-					}
-					sw.WriteLine(" ");
-					foreach (Paper p in _myUniversity.Paper)
-					{
-						sw.WriteLine(p.Name);
-						sw.WriteLine(p.Code);
-						sw.WriteLine(p.Coordinater);
-						sw.WriteLine(p.ConcatStudents());
-					}
-				}
-			}
-		}
-
-		private void OpenToolStripMenuItemClick(object sender, EventArgs e)
-		{
-			OpenFileDialog ofd = new OpenFileDialog();
-
-			//{
-			//	Filter = "Text files (*.txt)|*.txt"
-			//};
-			State = true;
-			while (State)
-			{
-				if (ofd.ShowDialog() == DialogResult.OK)
-				{
-					using (StreamReader sr = new StreamReader(ofd.OpenFile()))
-					{
-						try
-						{
-							while (true)
-							{
-								if (sr.ReadLine() != " ")
-								{
-									Student s = new Student(sr.ReadLine(), Convert.ToDateTime(sr.ReadLine()), int.Parse(sr.ReadLine()).ToString(), sr.ReadLine());
-								}
-							}
-							State = false;
-						}
-						catch
-						{
-							MessageBox.Show("Invalid file content");
-						}
-
-					}
+					enrollmentErrorLbl.Visible = false;
+					_myUniversity.SelectStudent(NameFromListBxIndex(studentListBx)).EnrolledPapers.Add(_myPaper);
 				}
 				else
 				{
-					State = false;
+					enrollmentErrorLbl.Visible = true;
 				}
 			}
 		}
-		*/
-		
-		/// <summary>
-		///		Unsure whether to write in json format.
-		///		I am unsure how to read json data back into the program and how to prevent any duplicate data from being added.
-		/// </summary>
-
 		private void SaveToolStripMenuItemClick(object sender, EventArgs e)
 		{
 			SaveFileDialog f = new SaveFileDialog()
@@ -173,7 +94,6 @@ namespace Assignment_5_212
 				}
 			}
 		}
-
 		private void OpenToolStripMenuItemClick(object sender, EventArgs e)
 		{
 			OpenFileDialog f = new OpenFileDialog()
@@ -183,11 +103,160 @@ namespace Assignment_5_212
 			if (f.ShowDialog() == DialogResult.OK)
 			{
 				string JSON = File.ReadAllText(f.FileName);
-				JavaScriptSerializer j = new JavaScriptSerializer();
-				object text = j.DeserializeObject(JSON);
+				University newUniversity = JsonConvert.DeserializeObject<University>(JSON);
+
+				//	Use schema to validate the input coming in.
+
+				if (ValidatePapers(newUniversity, _myUniversity))
+				{
+					UpdatePaperListBox(_myUniversity.Paper, paperListBx);
+				}
+				if (ValidateStudents(newUniversity, _myUniversity))
+				{
+					ValidateStudentPaperEnrollment(newUniversity, _myUniversity);
+					UpdateStudentListBox(_myUniversity.Student, studentListBx);
+				}
+			}
+		}
 
 
+		public void PassStudent(Student aStudent) { this._myStudent = aStudent; }
+		public void PassPaper(Paper aPaper) { this._myPaper = aPaper; }
+		public bool State { get; set; }
 
+		public string NameFromListBxIndex(ListBox lb)
+		{
+			string n = lb.SelectedItem.ToString();
+			string fw = n.Substring(0, n.IndexOf(" "));
+			return fw;
+		}
+
+		public bool AlreadyEnrolled(Student s, Paper p)
+		{
+			foreach (Paper exists in s.EnrolledPapers)
+			{
+				if (exists.Name == p.Name)
+				{
+					return false;
+				}
+			}
+			return true;
+		}
+
+		public int ValidatingJToken(Student s, Paper p = null)
+		{
+			if (s != null)
+			{
+				if (s.Name == null)
+				{
+					return -1;
+				}
+				return 1;
+			}
+			if (p != null)
+			{
+				if (p.Name == null)
+				{
+					return -1;
+				}
+				return 1;
+			}
+			return -1;
+		}
+
+		public bool ValidateStudents(University newUniversity, University oldUniversity)
+		{
+			State = false;
+			int limit = oldUniversity.Student.Count;
+			foreach (Student newStudent in newUniversity.Student)
+			{
+				if (ValidatingJToken(newStudent) == 1)
+				{
+					if (limit != 0)
+					{
+						for (int i = 0; i < limit; i++)
+						{
+							if (oldUniversity.Student[i].Id != newStudent.Id)
+							{
+								oldUniversity.Student.Add(newStudent);
+								State = true;
+							}
+						}
+					}
+					else
+					{
+						oldUniversity.Student.Add(newStudent);
+						State = true;
+					}
+				}
+			}
+			return State;
+		}
+
+		public bool ValidatePapers(University newUniversity, University oldUniversity)
+		{
+			State = false;
+			int limit = oldUniversity.Paper.Count;
+			foreach (Paper newPaper in newUniversity.Paper)
+			{
+				if (ValidatingJToken(null, newPaper) == 1)
+				{
+					if (limit != 0)
+					{
+						for (int i = 0; i < limit; i++)
+						{
+							if (oldUniversity.Paper[i].Code != newPaper.Code)
+							{
+								oldUniversity.Paper.Add(newPaper);
+								State = true;
+							}
+						}
+					}
+					else
+					{
+						oldUniversity.Paper.Add(newPaper);
+						State = true;
+					}
+				}
+			}
+			return State;
+		}
+
+		//	Removes any papers the student is enroled in that don't exist in the current University.
+		public void ValidateStudentPaperEnrollment(University newUniversity, University oldUniversity)
+		{
+			foreach (Student s in newUniversity.Student)
+			{
+				int count = s.EnrolledPapers.Count;
+				int i = 0;
+				while (count > i)
+				{					
+					foreach (Paper p in oldUniversity.Paper)
+					{
+						if (s.EnrolledPapers[i] != p)
+						{
+							s.EnrolledPapers.RemoveAt(i);
+							count--;
+						}
+					}
+					i++;
+				}
+			}
+		}
+		
+		public void UpdateStudentListBox(List<Student> students, ListBox lb)
+		{
+			foreach (Student s in students)
+			{
+				lb.Items.Add(s.Name + " " + s.Id);
+			}
+		}
+
+		public void UpdatePaperListBox(List<Paper> papers, ListBox lb)
+		{
+			foreach (Paper p in papers)
+			{
+				lb.Items.Add(p.Name + " " + p.Code);
 			}
 		}
 	}

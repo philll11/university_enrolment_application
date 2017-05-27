@@ -33,8 +33,9 @@ namespace Assignment_5_212
 		{
 			if (papNmeTxBx.Text != "Joe Dow")
 			{
+                int code;
 				nameEro.Visible = false;
-				if (Int32.TryParse(papCodeTxBx.Text, out int code) && papCodeTxBx.Text != "1234")
+				if (Int32.TryParse(papCodeTxBx.Text, out code) && papCodeTxBx.Text != "1234")
 				{
 					codeEro.Visible = false;
 					if (papCoordTxBx.Text != "Jone Jones")

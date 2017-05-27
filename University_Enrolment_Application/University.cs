@@ -8,16 +8,32 @@ namespace Assignment_5_212
 {
 	public class University
 	{
-		private List<Student> _uniStudents = new List<Student>();
-		private List<Paper> _uniPapers = new List<Paper>();
+		private List<Paper> _uniPapers;
+		private List<Student> _uniStudents;		
+
+		public University(List<Paper> pList = null, List<Student> sList = null)
+		{
+			if (sList != null)
+			{
+				_uniStudents = sList;
+			}
+			else
+			{
+				_uniStudents = new List<Student>();
+			}
+			if (pList != null)
+			{
+				_uniPapers = pList;
+			}
+			else
+			{
+				_uniPapers = new List<Paper>();
+			}
+		}
 		
 		//	Getters
 		public List<Student> Student { get { return _uniStudents; } }
 		public List<Paper> Paper { get { return _uniPapers; } }
-
-		//	Adders
-		public void AddSudent(Student s) { this._uniStudents.Add(s); }
-		public void AddPaper(Paper p) { this._uniPapers.Add(p);	}
 
 		public Student SelectStudent(string aName)
 		{

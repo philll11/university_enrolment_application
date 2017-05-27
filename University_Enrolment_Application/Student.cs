@@ -12,15 +12,26 @@ namespace Assignment_5_212
 		private DateTime _birthday;
 		private string _id;
 		private string _address;
-		private List<string> _enrolledPapers = new List<string>();
+		private List<Paper> _enrolledPapers;
 
 		//	Constructor
-		public Student(string name, DateTime birthday, string id, string address)
+		public Student(string name, DateTime birthday, string id, string address, List<Paper> enrolledPapers = null)
 		{
-			_sdtName = name;
-			_birthday = birthday;
-			_id = id;
-			_address = address;
+			if (name != null && birthday != null && id != null && address != null)
+			{
+				_sdtName = name;
+				_birthday = birthday;
+				_id = id;
+				_address = address;
+				if (enrolledPapers != null)
+				{
+					_enrolledPapers = enrolledPapers;
+				}
+				else
+				{
+					_enrolledPapers = new List<Paper>();
+				}
+			}
 		}
 
 		//	Getters
@@ -28,16 +39,7 @@ namespace Assignment_5_212
 		public DateTime Birthday { get { return _birthday; } }
 		public string Id { get { return _id; } }
 		public string Address { get { return _address; } }
-		public List<string> EnrolledPapers { get { return _enrolledPapers; } set { _enrolledPapers.Add(value.ToString()); } }
-		public string ConcatPapers()
-		{
-			StringBuilder sb = new StringBuilder();
-			for (int i = 0; i < _enrolledPapers.Count; i++)
-			{
-				sb.Append(_enrolledPapers[i]);
-				sb.Append(" ");
-			}
-			return sb.ToString();
-		}
+		public List<Paper> EnrolledPapers {	get { return _enrolledPapers; }	}
+		
 	}
 }

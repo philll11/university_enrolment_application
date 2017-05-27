@@ -28,3 +28,33 @@ C:\Users\admin\Documents\Visual Studio 2017\Projects\Assignment_5_212\University
 C:\Users\admin\Documents\Visual Studio 2017\Projects\Assignment_5_212\University_Enrolment_Application\obj\Debug\Assignment_5_212.csproj.GenerateResource.Cache
 C:\Users\admin\Documents\Visual Studio 2017\Projects\Assignment_5_212\University_Enrolment_Application\obj\Debug\Assignment_5_212.exe
 C:\Users\admin\Documents\Visual Studio 2017\Projects\Assignment_5_212\University_Enrolment_Application\obj\Debug\Assignment_5_212.pdb
+\\alb-homes1.massey.ac.nz\15232331\My Documents\Assignment_5_212\University_Enrolment_Application\bin\Debug\Assignment_5_212.exe.config
+\\alb-homes1.massey.ac.nz\15232331\My Documents\Assignment_5_212\University_Enrolment_Application\obj\Debug\Assignment_5_212.exe
+\\alb-homes1.massey.ac.nz\15232331\My Documents\Assignment_5_212\University_Enrolment_Application\obj\Debug\Assignment_5_212.pdb
+\\alb-homes1.massey.ac.nz\15232331\My Documents\Assignment_5_212\University_Enrolment_Application\obj\Debug\Assignment_5_212.csprojResolveAssemblyReference.cache
+\\alb-homes1.massey.ac.nz\15232331\My Documents\Assignment_5_212\University_Enrolment_Application\obj\Debug\Assignment_5_212.MainWin.resources
+\\alb-homes1.massey.ac.nz\15232331\My Documents\Assignment_5_212\University_Enrolment_Application\obj\Debug\Assignment_5_212.PaperAddWin.resources
+\\alb-homes1.massey.ac.nz\15232331\My Documents\Assignment_5_212\University_Enrolment_Application\obj\Debug\Assignment_5_212.PaperInfoWin.resources
+\\alb-homes1.massey.ac.nz\15232331\My Documents\Assignment_5_212\University_Enrolment_Application\obj\Debug\Assignment_5_212.Properties.Resources.resources
+\\alb-homes1.massey.ac.nz\15232331\My Documents\Assignment_5_212\University_Enrolment_Application\obj\Debug\Assignment_5_212.StudentAddWin.resources
+\\alb-homes1.massey.ac.nz\15232331\My Documents\Assignment_5_212\University_Enrolment_Application\obj\Debug\Assignment_5_212.StudentInfoWin.resources
+\\alb-homes1.massey.ac.nz\15232331\My Documents\Assignment_5_212\University_Enrolment_Application\obj\Debug\Assignment_5_212.csproj.GenerateResource.Cache
+\\alb-homes1.massey.ac.nz\15232331\My Documents\Assignment_5_212\University_Enrolment_Application\bin\Debug\Assignment_5_212.exe
+\\alb-homes1.massey.ac.nz\15232331\My Documents\Assignment_5_212\University_Enrolment_Application\bin\Debug\Assignment_5_212.pdb
+\\alb-homes1.massey.ac.nz\15232331\My Documents\Assignment_5_212\University_Enrolment_Application\bin\Debug\Newtonsoft.Json.dll
+\\alb-homes1.massey.ac.nz\15232331\My Documents\Assignment_5_212\University_Enrolment_Application\bin\Debug\Newtonsoft.Json.xml
+C:\Users\admin\Downloads\Assignment_5\University_Enrolment_Application\obj\Debug\Assignment_5_212.csprojResolveAssemblyReference.cache
+C:\Users\admin\Downloads\Assignment_5\University_Enrolment_Application\obj\Debug\Assignment_5_212.MainWin.resources
+C:\Users\admin\Downloads\Assignment_5\University_Enrolment_Application\obj\Debug\Assignment_5_212.PaperAddWin.resources
+C:\Users\admin\Downloads\Assignment_5\University_Enrolment_Application\obj\Debug\Assignment_5_212.PaperInfoWin.resources
+C:\Users\admin\Downloads\Assignment_5\University_Enrolment_Application\obj\Debug\Assignment_5_212.Properties.Resources.resources
+C:\Users\admin\Downloads\Assignment_5\University_Enrolment_Application\obj\Debug\Assignment_5_212.StudentAddWin.resources
+C:\Users\admin\Downloads\Assignment_5\University_Enrolment_Application\obj\Debug\Assignment_5_212.StudentInfoWin.resources
+C:\Users\admin\Downloads\Assignment_5\University_Enrolment_Application\obj\Debug\Assignment_5_212.csproj.GenerateResource.Cache
+C:\Users\admin\Downloads\Assignment_5\University_Enrolment_Application\obj\Debug\Assignment_5_212.exe
+C:\Users\admin\Downloads\Assignment_5\University_Enrolment_Application\obj\Debug\Assignment_5_212.pdb
+C:\Users\admin\Downloads\Assignment_5\University_Enrolment_Application\bin\Debug\Assignment_5_212.exe.config
+C:\Users\admin\Downloads\Assignment_5\University_Enrolment_Application\bin\Debug\Assignment_5_212.exe
+C:\Users\admin\Downloads\Assignment_5\University_Enrolment_Application\bin\Debug\Assignment_5_212.pdb
+C:\Users\admin\Downloads\Assignment_5\University_Enrolment_Application\bin\Debug\Newtonsoft.Json.dll
+C:\Users\admin\Downloads\Assignment_5\University_Enrolment_Application\bin\Debug\Newtonsoft.Json.xml

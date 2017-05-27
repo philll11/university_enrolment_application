@@ -34,8 +34,9 @@ namespace Assignment_5_212
 		{
 			if (sdtNmeTxBx.Text != "Joe Dow")
 			{
+                int id;
 				nameEro.Visible = false;				
-				if (Int32.TryParse(sdtIDTxBx.Text, out int id) && sdtIDTxBx.Text != "12345678")
+				if (Int32.TryParse(sdtIDTxBx.Text, out id) && sdtIDTxBx.Text != "12345678")
 				{
 					idEro.Visible = false;
 					if (sdtAdyTxBx.Text != "123 Upto Street")
